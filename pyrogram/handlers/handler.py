@@ -30,6 +30,7 @@ class Handler:
         self.filters = filters
 
     async def check(self, client: "pyrogram.Client", update: Update):
+        print(3)
         if callable(self.filters):
             if inspect.iscoroutinefunction(self.filters.__call__):
                 return await self.filters(client, update)
