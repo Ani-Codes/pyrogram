@@ -63,8 +63,7 @@ class Dispatcher:
         self.updates_queue = asyncio.Queue()
         self.groups = OrderedDict()
 
-        async def message_parser(update, users, chats):
-            print("yoo")
+        async def message_parser(update, users, chats):    
             return (
                 await pyrogram.types.Message._parse(self.client, update.message, users, chats,
                                                     isinstance(update, UpdateNewScheduledMessage)),
@@ -203,6 +202,7 @@ class Dispatcher:
 
     async def handler_worker(self, lock):
         while True:
+            print(1)
             packet = await self.updates_queue.get()
 
             if packet is None:
@@ -239,9 +239,9 @@ class Dispatcher:
 
                             try:
                                 if inspect.iscoroutinefunction(handler.callback):
+                                    print(2)
                                     await handler.callback(self.client, *args)
-                                else:
-                                    print("ani-codes")
+                                else:                                
                                     await self.loop.run_in_executor(
                                         self.client.executor,
                                         handler.callback,
