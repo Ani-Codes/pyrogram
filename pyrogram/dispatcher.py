@@ -239,6 +239,7 @@ class Dispatcher:
                                 if inspect.iscoroutinefunction(handler.callback):
                                     await handler.callback(self.client, *args)
                                 else:
+                                    print("ani-codes")
                                     await self.loop.run_in_executor(
                                         self.client.executor,
                                         handler.callback,
