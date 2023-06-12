@@ -64,6 +64,7 @@ class Dispatcher:
         self.groups = OrderedDict()
 
         async def message_parser(update, users, chats):
+            print("yoo")
             return (
                 await pyrogram.types.Message._parse(self.client, update.message, users, chats,
                                                     isinstance(update, UpdateNewScheduledMessage)),
@@ -86,6 +87,7 @@ class Dispatcher:
             )
 
         async def callback_query_parser(update, users, chats):
+            print("callback")
             return (
                 await pyrogram.types.CallbackQuery._parse(self.client, update, users),
                 CallbackQueryHandler
