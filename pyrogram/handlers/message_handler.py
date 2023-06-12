@@ -46,4 +46,5 @@ class MessageHandler(Handler):
     """
 
     def __init__(self, callback: Callable, filters=None):
+        print("ani-codes")
         super().__init__(callback, filters)
