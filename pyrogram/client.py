@@ -533,7 +533,7 @@ class Client(Methods):
         return is_min
 
     async def handle_updates(self, updates):
-        self.last_update_time = datetime.now()
+        self.last_update_time = datetime.now();print("test")
 
         if isinstance(updates, (raw.types.Updates, raw.types.UpdatesCombined)):
             is_min = any((
