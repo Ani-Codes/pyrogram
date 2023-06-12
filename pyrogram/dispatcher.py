@@ -202,7 +202,6 @@ class Dispatcher:
 
     async def handler_worker(self, lock):
         while True:
-            print(1)
             packet = await self.updates_queue.get()
 
             if packet is None:
