@@ -219,7 +219,7 @@ class Dispatcher:
 
                 async with lock:
                     for group in self.groups.values():
-                        print(group)
+                      
                         for handler in group:
                             args = None
 
