@@ -219,6 +219,7 @@ class Dispatcher:
 
                 async with lock:
                     for group in self.groups.values():
+                        print(group)
                         for handler in group:
                             args = None
 
@@ -237,8 +238,7 @@ class Dispatcher:
                                 continue
 
                             try:
-                                if inspect.iscoroutinefunction(handler.callback):
-                                    print(2)
+                                if inspect.iscoroutinefunction(handler.callback):                                   
                                     await handler.callback(self.client, *args)
                                 else:                                
                                     await self.loop.run_in_executor(
